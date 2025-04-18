@@ -3,6 +3,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  /* Custom colors removed from here */
+}
+
+/* Define custom theme values using @theme */
+@theme {
+  /* Custom colors */
+  --terminal-bg: #353535;
+  --terminal-text: #c5d0cf;
+  --highlight-bg: #f1e29a;
+  --highlight-text: #5f5c54;
 }
 
 @theme inline {
