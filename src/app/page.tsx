@@ -1,52 +1,52 @@
 'use client' // Mark as client component
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, FC } from 'react'
 import Image from 'next/image'
 
-export default function Home() {
+const FULL_TEXT_1 = '> Hello'
+const FULL_TEXT_2 = '> My name is Rajiv'
+const FULL_TEXT_3 = '> This is my lifelog and digital playground '
+
+const TYPING_SPEED = 50 // Milliseconds per character
+const DELAY_BETWEEN_LINES = 200 // Milliseconds delay
+
+const Home: FC = () => {
   const [line1, setLine1] = useState('')
   const [line2, setLine2] = useState('')
   const [line3, setLine3] = useState('')
   const [showCursor, setShowCursor] = useState(false)
 
-  const typingSpeed = 50 // Milliseconds per character
-  const delayBetweenLines = 200 // Milliseconds delay
-
   useEffect(() => {
-    const fullText1 = '> Hello'
-    const fullText2 = '> My name is Rajiv'
-    const fullText3 = '> This is my lifelog and digital playground '
-
     let charIndex = 0
     let currentLine = 1
     let timeoutId: NodeJS.Timeout | null = null
 
     const typeChar = () => {
       if (currentLine === 1) {
-        if (charIndex < fullText1.length) {
-          setLine1(fullText1.substring(0, charIndex + 1))
+        if (charIndex < FULL_TEXT_1.length) {
+          setLine1(FULL_TEXT_1.substring(0, charIndex + 1))
           charIndex++
-          timeoutId = setTimeout(typeChar, typingSpeed)
+          timeoutId = setTimeout(typeChar, TYPING_SPEED)
         } else {
           charIndex = 0
           currentLine = 2
-          timeoutId = setTimeout(typeChar, delayBetweenLines)
+          timeoutId = setTimeout(typeChar, DELAY_BETWEEN_LINES)
         }
       } else if (currentLine === 2) {
-        if (charIndex < fullText2.length) {
-          setLine2(fullText2.substring(0, charIndex + 1))
+        if (charIndex < FULL_TEXT_2.length) {
+          setLine2(FULL_TEXT_2.substring(0, charIndex + 1))
           charIndex++
-          timeoutId = setTimeout(typeChar, typingSpeed)
+          timeoutId = setTimeout(typeChar, TYPING_SPEED)
         } else {
           charIndex = 0
           currentLine = 3
-          timeoutId = setTimeout(typeChar, delayBetweenLines)
+          timeoutId = setTimeout(typeChar, DELAY_BETWEEN_LINES)
         }
       } else if (currentLine === 3) {
-        if (charIndex < fullText3.length) {
-          setLine3(fullText3.substring(0, charIndex + 1))
+        if (charIndex < FULL_TEXT_3.length) {
+          setLine3(FULL_TEXT_3.substring(0, charIndex + 1))
           charIndex++
-          timeoutId = setTimeout(typeChar, typingSpeed)
+          timeoutId = setTimeout(typeChar, TYPING_SPEED)
         } else {
           setShowCursor(true)
         }
@@ -78,7 +78,7 @@ export default function Home() {
         <p>
           {line3}
           {showCursor && (
-            <span className='animate-blink inline-block w-2 h-4 bg-[var(--terminal-text)] ml-1 align-bottom'></span>
+            <span className='animate-[blink_1s_step-end_infinite] inline-block w-2 h-4 bg-[var(--terminal-text)] ml-1 align-bottom'></span>
           )}
         </p>
       </div>
@@ -179,3 +179,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Home
