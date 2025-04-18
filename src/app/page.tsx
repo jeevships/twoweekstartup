@@ -5,7 +5,11 @@ import Image from 'next/image'
 
 const FULL_TEXT_1 = '> Hello'
 const FULL_TEXT_2 = '> My name is Rajiv'
-const FULL_TEXT_3 = '> This is my lifelog and digital playground '
+const FULL_TEXT_3 = '> This is my digital playground '
+const FULL_TEXT_4 =
+  '> Here I will be launching an MVP (minimum viable product) every two weeks in order to find Product Market Fit & become a better programmer'
+const FULL_TEXT_5 =
+  '> I will do this every two weeks until I hit $10k MRR, or get a job as a software developer — whichever comes first'
 
 const TYPING_SPEED = 50 // Milliseconds per character
 const DELAY_BETWEEN_LINES = 200 // Milliseconds delay
@@ -14,6 +18,8 @@ const Home: FC = () => {
   const [line1, setLine1] = useState('')
   const [line2, setLine2] = useState('')
   const [line3, setLine3] = useState('')
+  const [line4, setLine4] = useState('')
+  const [line5, setLine5] = useState('')
   const [showCursor, setShowCursor] = useState(false)
 
   useEffect(() => {
@@ -48,6 +54,26 @@ const Home: FC = () => {
           charIndex++
           timeoutId = setTimeout(typeChar, TYPING_SPEED)
         } else {
+          charIndex = 0
+          currentLine = 4
+          timeoutId = setTimeout(typeChar, DELAY_BETWEEN_LINES)
+        }
+      } else if (currentLine === 4) {
+        if (charIndex < FULL_TEXT_4.length) {
+          setLine4(FULL_TEXT_4.substring(0, charIndex + 1))
+          charIndex++
+          timeoutId = setTimeout(typeChar, TYPING_SPEED)
+        } else {
+          charIndex = 0
+          currentLine = 5
+          timeoutId = setTimeout(typeChar, DELAY_BETWEEN_LINES)
+        }
+      } else if (currentLine === 5) {
+        if (charIndex < FULL_TEXT_5.length) {
+          setLine5(FULL_TEXT_5.substring(0, charIndex + 1))
+          charIndex++
+          timeoutId = setTimeout(typeChar, TYPING_SPEED)
+        } else {
           setShowCursor(true)
         }
       }
@@ -57,6 +83,8 @@ const Home: FC = () => {
     setLine1('')
     setLine2('')
     setLine3('')
+    setLine4('')
+    setLine5('')
     setShowCursor(false)
     // Clear any potential leftover timeout before starting a new one
     if (timeoutId) clearTimeout(timeoutId)
@@ -72,11 +100,13 @@ const Home: FC = () => {
 
   return (
     <div className='bg-white min-h-screen p-8'>
-      <div className='bg-[var(--terminal-bg)] text-[var(--terminal-text)] p-4 rounded-md font-mono text-sm mb-12 max-w-xl mx-auto min-h-[100px]'>
+      <div className='bg-[var(--terminal-bg)] text-[var(--terminal-text)] p-4 rounded-md font-mono text-sm mb-12 max-w-xl mx-auto min-h-[150px]'>
         <p>{line1}</p>
         <p>{line2}</p>
+        <p>{line3}</p>
+        <p>{line4}</p>
         <p>
-          {line3}
+          {line5}
           {showCursor && (
             <span className='animate-[blink_1s_step-end_infinite] inline-block w-2 h-4 bg-[var(--terminal-text)] ml-1 align-bottom'></span>
           )}
@@ -84,7 +114,7 @@ const Home: FC = () => {
       </div>
 
       <div className='max-w-xl mx-auto'>
-        <h2 className='text-2xl font-bold mb-6 text-black'>Thoughts</h2>
+        <h2 className='text-2xl font-bold mb-6 text-black'>Build Chronicles </h2>
         <ul className='space-y-6'>
           <li>
             <a
