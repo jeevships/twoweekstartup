@@ -1,7 +1,6 @@
 'use client' // Mark as client component
 
 import { useState, useEffect, FC } from 'react'
-import Image from 'next/image'
 
 const FULL_TEXT_1 = '> Hello'
 const FULL_TEXT_2 = '> My name is Rajiv'
@@ -21,6 +20,7 @@ const Home: FC = () => {
   const [line4, setLine4] = useState('')
   const [line5, setLine5] = useState('')
   const [showCursor, setShowCursor] = useState(false)
+  const [currentDate, setCurrentDate] = useState('') // State for current date
 
   useEffect(() => {
     let charIndex = 0
@@ -90,6 +90,17 @@ const Home: FC = () => {
     if (timeoutId) clearTimeout(timeoutId)
     timeoutId = setTimeout(typeChar, 500)
 
+    // --- Start: Set Current Date ---
+    const today = new Date()
+    // Define options for toLocaleDateString for better type checking
+    const options: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }
+    setCurrentDate(today.toLocaleDateString(undefined, options)) // Format date like "October 26, 2023"
+    // --- End: Set Current Date ---
+
     // Cleanup function
     return () => {
       if (timeoutId) {
@@ -99,8 +110,15 @@ const Home: FC = () => {
   }, [])
 
   return (
-    <div className='bg-white min-h-screen p-8'>
-      <div className='bg-[var(--terminal-bg)] text-[var(--terminal-text)] p-4 rounded-md font-mono text-sm mb-12 max-w-xl mx-auto min-h-[150px]'>
+    <div className='relative bg-white min-h-screen p-8'>
+      <div className='absolute top-8 right-8 bg-[var(--terminal-bg)] text-[var(--terminal-text)] p-4 rounded-md font-mono text-sm z-10'>
+        <p>MRR: $0</p>
+        <p>Start Date: April 19, 2025</p>
+        <p>Current Date: {currentDate}</p>
+        <p>Startups Built: 0</p>
+      </div>
+
+      <div className='bg-[var(--terminal-bg)] text-[var(--terminal-text)] p-4 rounded-md font-mono text-base mb-12 max-w-xl mx-auto min-h-[150px]'>
         <p>{line1}</p>
         <p>{line2}</p>
         <p>{line3}</p>
@@ -114,14 +132,16 @@ const Home: FC = () => {
       </div>
 
       <div className='max-w-xl mx-auto'>
-        <h2 className='text-2xl font-bold mb-6 text-black'>Build Chronicles </h2>
+        <h2 className='text-3xl font-bold mb-6 text-black'>
+          Build Chronicles{' '}
+        </h2>
         <ul className='space-y-6'>
           <li>
             <a
               href='#'
               className='bg-[var(--highlight-bg)] text-[var(--highlight-text)] px-2 py-1 rounded text-sm hover:brightness-95'
             >
-              The case against conversational interfaces (new)
+              Why Am I Doing This? (new)
             </a>
           </li>
           <li>
