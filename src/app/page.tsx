@@ -1,20 +1,10 @@
 'use client' // Mark as client component
 
-import { useState, useEffect, FC } from 'react'
+import { useEffect, FC } from 'react'
 import TerminalDisplay from '@/components/TerminalDisplay'
 
 const Home: FC = () => {
-  const [currentDate, setCurrentDate] = useState('')
-
-  useEffect(() => {
-    const today = new Date()
-    const options: Intl.DateTimeFormatOptions = {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    }
-    setCurrentDate(today.toLocaleDateString(undefined, options))
-  }, [])
+  useEffect(() => {}, [])
 
   return (
     <div className='relative bg-white min-h-screen p-8'>

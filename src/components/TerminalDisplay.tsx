@@ -10,7 +10,6 @@ const FULL_TEXT_2 = '> My name is Rajiv'
 const FULL_TEXT_3 = '> This is my digital playground '
 const FULL_TEXT_4 =
   '> Here I will be launching an MVP (minimum viable product) every two weeks in order to find Product Market Fit & become a better programmer'
-const FULL_TEXT_5 = '> I will do this every two weeks until I hit $10k MRR'
 
 const TYPING_SPEED = 50 // Milliseconds per character
 const DELAY_BETWEEN_LINES = 200 // Milliseconds delay
@@ -20,7 +19,6 @@ const TerminalDisplay: FC = () => {
   const [line2, setLine2] = useState('')
   const [line3, setLine3] = useState('')
   const [line4, setLine4] = useState('')
-  const [line5, setLine5] = useState('')
   const [showCursor, setShowCursor] = useState(false)
 
   const pathname = usePathname()
@@ -32,7 +30,7 @@ const TerminalDisplay: FC = () => {
     let timeoutId: NodeJS.Timeout | null = null
 
     const typeChar = () => {
-      // Logic for typing each line (same as before)
+      // Logic for typing each line (adjusted to stop at line 4)
       if (currentLine === 1) {
         if (charIndex < FULL_TEXT_1.length) {
           setLine1(FULL_TEXT_1.substring(0, charIndex + 1))
@@ -69,16 +67,7 @@ const TerminalDisplay: FC = () => {
           charIndex++
           timeoutId = setTimeout(typeChar, TYPING_SPEED)
         } else {
-          charIndex = 0
-          currentLine = 5
-          timeoutId = setTimeout(typeChar, DELAY_BETWEEN_LINES)
-        }
-      } else if (currentLine === 5) {
-        if (charIndex < FULL_TEXT_5.length) {
-          setLine5(FULL_TEXT_5.substring(0, charIndex + 1))
-          charIndex++
-          timeoutId = setTimeout(typeChar, TYPING_SPEED)
-        } else {
+          // Stop after line 4 and show cursor
           setShowCursor(true)
         }
       }
@@ -89,9 +78,8 @@ const TerminalDisplay: FC = () => {
     setLine2('')
     setLine3('')
     setLine4('')
-    setLine5('')
     setShowCursor(false)
-    if (timeoutId) clearTimeout(timeoutId) // Clear previous timeout if any
+    if (timeoutId) clearTimeout(timeoutId)
     timeoutId = setTimeout(typeChar, 500)
 
     // Cleanup function to clear timeout on unmount
@@ -111,9 +99,8 @@ const TerminalDisplay: FC = () => {
       <p>{line1}</p>
       <p>{line2}</p>
       <p>{line3}</p>
-      <p>{line4}</p>
       <p>
-        {line5}
+        {line4}
         {showCursor && (
           <span className='animate-[blink_1s_step-end_infinite] inline-block w-2 h-4 bg-[var(--terminal-text)] ml-1 align-bottom'></span>
         )}
