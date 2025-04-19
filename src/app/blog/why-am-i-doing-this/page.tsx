@@ -29,7 +29,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({ number, title }) => (
 
 // Highlight component for consistent styling
 const Highlight: React.FC<HighlightProps> = ({ children }) => (
-  <span className='bg-amber-50 text-amber-900 px-1 py-0.5 rounded'>
+  <span className='bg-[var(--highlight-bg)] text-[var(--highlight-text)] px-1 py-0.5 rounded'>
     {children}
   </span>
 )
@@ -44,71 +44,55 @@ const BlogPost: React.FC = () => {
           Why Am I Doing This?
         </h1>
 
-        <SectionHeading number='1' title='The Arc of Collaboration' />
+        <SectionHeading number='1' title='INTRO' />
 
         <p className='mb-6 text-gray-700 leading-relaxed'>
-          <Highlight>Kevin Kwok</Highlight> posted an excellent article a while
-          back about <Highlight>The Arc of Collaboration</Highlight>. I highly
-          recommend reading the whole thing, but the main argument is that
-          productivity and collaboration have always been handled as two
-          separate workflows:
-        </p>
-
-        <ol className='list-decimal list-inside space-y-2 mb-6 text-gray-700 leading-relaxed pl-4'>
-          <li>
-            We started with individual files that we sent back and forth via
-            email
-          </li>
-          <li>
-            Then Dropbox came along and enabled collaboration within documents,
-            but communication about these docs remained a separate channel
-          </li>
-          <li>
-            Slack wants to become the central communication channel for all
-            productivity apps
-          </li>
-        </ol>
-
-        <p className='mb-6 text-gray-700 leading-relaxed'>
-          The problem, Kevin argues, is that productivity and collaboration
-          shouldn't be treated separately. Instead, they should go hand in hand
-          and that's exactly what a lot of the latest productivity tools do:
-          Figma, Notion, Airtable, etc all have messaging natively built in to
-          their apps.
+          So, I got this idea from Peter Lovell's{' '}
+          <a
+            href='https://levels.io/12-startups-12-months/'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <Highlight>12 Startups in 12 Months</Highlight>
+          </a>
+          , and he got the idea from Jennifer Dewalt's{' '}
+          <a
+            href='https://jenniferdewalt.com/?ref=levels.io'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <Highlight>180 Websites in 180 Days</Highlight>
+          </a>
+          . What I've noticed recently, after teaching myself how to code, is
+          that I tend to spend too much time working on a single project. Then I
+          just lose interest or it gets too difficult, and I end up quitting and
+          starting over on something new.
         </p>
 
         <p className='mb-6 text-gray-700 leading-relaxed'>
-          I'm not entirely sure where this obsession with conversational
-          interfaces comes from. Perhaps it's a type of anemoia, a nostalgia for
-          a future we saw in StarTrek that never became reality. Or maybe it's
-          simply that people look at the term "natural language" and think
-          "well, if it's <i>natural</i> then it must be the logical end state".
+          Another thing is, I'm expecting most of these attempts to fail. I
+          think Peter Lovell mentioned his failure rate is around 95%. So, if I
+          do 12 startups in 12 months and they all fail, that's potentially a
+          whole year wasted without building a profitable web app.
         </p>
 
         <p className='mb-6 text-gray-700 leading-relaxed'>
-          I'm here to tell you that it's not.
-        </p>
-
-        <SectionHeading number='2' title='Data Transfer Mechanisms' />
-
-        <p className='mb-6 text-gray-700 leading-relaxed'>
-          When people say "natural language" what they mean is written or verbal
-          communication. Natural language is a way to exchange ideas and
-          knowledge between humans. In other words, it's a data transfer
-          mechanism.
-        </p>
-
-        <p className='mb-6 text-gray-700 leading-relaxed'>
-          Data transfer mechanisms have two critical factors: speed and
-          lossiness.
+          That's why the idea of doing one every two weeks came to mind. I know
+          it might seem a bit crazy because you can't really create a great app
+          in just two weeks. But I think the core of this idea is to force
+          myself to just ship a very basic MVP and see if there's product-market
+          fit and if it gets any traction. At the very least, if I can't code an
+          app in two weeks, I'll put out a landing page with, you know, a fake
+          payment link or an email list to gauge interest. If there's no
+          interest, I'll just move on.
         </p>
 
         <p className='mb-6 text-gray-700 leading-relaxed'>
-          Speed determines how quickly data is transferred from the sender to
-          the receiver, while lossiness refers to how accurately the data is
-          transferred. In an ideal state, you want data transfer to happen at
-          maximum speed (instant) and with perfect fidelity (lossless), but
-          these two attributes are often a bit of a trade-off.
+          Yeah, so essentially, the plan is to launch a startup every two weeks.
+          If, at the end of those two weeks, it doesn't gain traction, I'll move
+          on to the next idea. However, if I think there's some potential there,
+          I might start the new two-week startup but also continue doing some
+          marketing and development on the old one if I see promise.
         </p>
       </article>
     </div>
